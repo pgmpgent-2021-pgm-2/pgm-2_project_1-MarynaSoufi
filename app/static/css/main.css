@@ -1,0 +1,130 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: sans-serif;
+    font-weight: normal;
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    color:  #000000;
+}
+.container {
+    width: 94rem;
+    max-width: 100%;
+    padding: 1rem;
+    margin: 0 auto;
+}
+header {
+    background-color: #48494b;
+   
+}
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    vertical-align: center;
+}
+header img {
+    width: 3rem;
+    height: 3rem;
+}
+.logo img{
+    border-radius: 50%;
+}
+.covid-quantity,
+.weather-degree {
+    color: #fff;
+    font-weight: 700;
+    margin-right: .5rem;
+}
+.covid {
+    display: flex;
+    align-items: center;
+    margin-right: 2rem;
+}
+.weather {
+    display: flex;
+    align-items: center;
+}
+.header__info {
+    display: flex;
+    justify-content: flex-end;
+}
+article {
+    display: flex;
+}
+.team {
+    width: 20%;
+}
+.team__photo {
+    width: 4rem;
+    margin-right: 1rem;
+}
+.team__photo-wrapper {
+    display: flex;
+    align-items: center;
+    color: #ccc;
+    font-size: .7rem;
+}
+.team .container {
+    background-color: #222;
+}
+.team__name {
+    color: #fff;
+    font-size: .8;
+}
+.team h2 {
+    color: #000;
+    background-color: #3caea3;
+    padding: 1rem;
+    margin: 0;
+}
+.midle {
+    width:60%;
+    background-color: #222;
+    margin: 0;
+    box-shadow: 0 3px 2px 1px rgb(255, 255, 255);
+}
+.midle h2 {
+    color: #000;
+    background-color: #3caea3;
+    padding: 1rem;
+    margin: 0;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+.midle__team-followers {
+    color: #fff;
+    box-shadow: 0 0 1px 0;
+    text-align: center;
+    padding: 1rem 0;
+    border-radius: .6rem;
+}
+.users {
+    width: 20%;
+    box-shadow: 0 3px 2px 1px rgb(255, 255, 255);
+    min-height: 70rem;
+    background-color: #222;
+}
+.users .container {
+    background-color: #222;
+}
+.users h2 {
+    color: #000;
+    background-color: #3caea3;
+    padding: 1rem;
+    margin: 0;
+}
+.users button {
+    background-color: #000;
+    color:rgb(255, 255, 255);
+    border: transparent;
+    padding: .5rem;
+}
+.users input {
+    padding: .3rem;
+}
+.users form {
+    display: flex;
+}
