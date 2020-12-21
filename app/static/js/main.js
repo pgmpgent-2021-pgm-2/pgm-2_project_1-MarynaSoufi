@@ -8,6 +8,7 @@ const covidUrl = "https://data.stad.gent/api/records/1.0/search/?dataset=dataset
             this.cacheElements();
             this.fetchWeather();
             this.fetchCovid();
+            this.fetchPgm();
            
 
         },
@@ -15,16 +16,28 @@ const covidUrl = "https://data.stad.gent/api/records/1.0/search/?dataset=dataset
             this.covidQuantity = document.querySelector('.covid-quantity');
             this.weather = document.querySelector('.weather-degree');
             this.weatherImage = document.querySelector('.weather img');
+            this.pgmTeam = document.querySelector('.team__person-wrapper');
         },
         async fetchWeather() {
             this.weatherApi = new WeatherApi();
             const jsonData = await this.weatherApi.getCurrentWeather();
             this.updateWeather(jsonData);   
+            setInterval(async (ev) => {
+                await this.updateWeather(jsonData);
+              }, 30000);
         },  
         async fetchCovid() {
             this.covidApi = new GhentOpenDataApi();
             const jsonData = await this.covidApi.getCovidPositiveCases();
             this.updateCovid(jsonData);
+            setInterval(async (ev) => {
+                await this.updateCovid(jsonData);
+              }, 30000);
+        },
+        async fetchPgm() {
+            this.pgmApi = new UserApi();
+            const jsonData = await this.pgmApi.getUsers();
+            this.updatePgm(jsonData);            
         },
         updateWeather(weather) {
             const degree = weather.current.temp_c;
@@ -39,6 +52,32 @@ const covidUrl = "https://data.stad.gent/api/records/1.0/search/?dataset=dataset
                 str = `${i.fields.cases}`;
             }
             this.covidQuantity.innerText = str;
+        },
+        updatePgm(pgmData) {
+            const pgm = pgmData.team;
+            console.log(pgm);
+            let str = "";
+            pgm.forEach((e) => {
+                str += `<li>
+                <a class="team__photo-wrapper">
+                    <img class="team__photo" src="${e.thumbnail}" alt="photo">
+                    <span class="team__git-name">${e.portfolio.GitHubUserName}</span>
+                </a>
+                <span class="team__name">${e.name} ${e.surname}</span>
+            </li>`;
+            });
+            this.pgmTeam.innerHTML = str;
+            //full_name
+            //description
+            //size
+            //default_branch
+            //license.key
+            //private
+            //forks_count
+            //open_issues
+            //watchers
+            //url
+
         }
     }
     app.init();

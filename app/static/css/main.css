@@ -60,6 +60,10 @@ article {
 .team__photo {
     width: 4rem;
     margin-right: 1rem;
+    transition: all .2s ease-in-out;
+}
+.team__photo:hover {
+    transform: scale(1.1);
 }
 .team__photo-wrapper {
     display: flex;
@@ -127,4 +131,11 @@ article {
 }
 .users form {
     display: flex;
+}
+.team__person-wrapper {
+    padding: 0;
+}
+.team__person-wrapper > *{
+    margin-bottom: 1rem;
+    list-style: none;
 }
