@@ -20,7 +20,6 @@ const covidUrl = "https://data.stad.gent/api/records/1.0/search/?dataset=dataset
             this.weatherApi = new WeatherApi();
             const jsonData = await this.weatherApi.getCurrentWeather();
             this.updateWeather(jsonData);   
-            
         },  
         async fetchCovid() {
             this.covidApi = new GhentOpenDataApi();
@@ -41,7 +40,6 @@ const covidUrl = "https://data.stad.gent/api/records/1.0/search/?dataset=dataset
             }
             this.covidQuantity.innerText = str;
         }
-
     }
     app.init();
 

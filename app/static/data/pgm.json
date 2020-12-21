@@ -1,13 +1,43 @@
-[
+ const pgmData = `[
     {
-        "name": "",
-        "surname": "",
-        "email": "",
-        "thumbnail": "",
-        "motto": "",
+        "name": "Evelien",
+        "surname": "Rutsaert",
+        "email": "evelien.rutsaert@arteveldehs.be",
+        "thumbnail": "https://avatars0.githubusercontent.com/u/22195343?v=4",
+        "motto": "If debugging is the process of removing software bugs, then programming must be the process of putting them in.",
         "portfolio": {
-            "GitHubUserName": "",
-            "LinkedInUserName": ""
+            "GitHubUserName": "evelienrutsaert",
+            "LinkedInUserName": "Evelien Rutsaert"
+        },
+        "isDocent": true,
+        "dateOfBirth":504027618
+
+
+    },
+    {
+        "name": "Maryna",
+        "surname": "Soufi",
+        "email": "xysamemir@gmail.com",
+        "thumbnail": "https://avatars2.githubusercontent.com/u/70641421?v=4",
+        "motto": "Don’t worry if it doesn’t work right. If everything did, you’d be out of a job.",
+        "portfolio": {
+            "GitHubUserName": "MarynaSoufi",
+            "LinkedInUserName": "Marina Soufi"
+        },
+        "isDocent": false,
+        "dateOfBirth":648747618
+
+
+    },
+    {
+        "name": "Philippe",
+        "surname": "De Pauw - Waterschoot",
+        "email": "philippe.depauw@arteveldehs.be",
+        "thumbnail": "https://avatars2.githubusercontent.com/u/390219?v=4",
+        "motto": "First, solve the problem.Then write the code",
+        "portfolio": {
+            "GitHubUserName": "drdynscript",
+            "LinkedInUserName": "Philippe De Pauw - Waterschoot"
         },
         "isDocent": true,
         "dateOfBirth":23
@@ -15,14 +45,30 @@
 
     },
     {
-        "name": "",
-        "surname": "",
-        "email": "",
-        "thumbnail": "",
-        "motto": "",
+        "name": "Michael",
+        "surname": "Vanderpoorten",
+        "email": "michael.vanderpoorten@arteveldehs.be",
+        "thumbnail": "https://media-exp1.licdn.com/dms/image/C5603AQFcv3W19CwC-Q/profile-displayphoto-shrink_400_400/0/1601993689910?e=1614211200&v=beta&t=r3U0D0ODlEjm--mou-3i3PAMHLPxrOS0cTwlrr1sMZk",
+        "motto": "Any app that can be written in JavaScript, will eventually be written in JavaScript.",
         "portfolio": {
-            "GitHubUserName": "",
-            "LinkedInUserName": ""
+            "GitHubUserName": "yungpanda",
+            "LinkedInUserName": "Michael Vanderpoorten"
+            
+        },
+        "isDocent": true,
+        "dateOfBirth": 492104418
+
+
+    },
+    {
+        "name": "Aiden",
+        "surname": "Soufi",
+        "email": "husameddin.soufi@student.arteveldehs.be",
+        "thumbnail": "https://avatars3.githubusercontent.com/u/68068622?v=4",
+        "motto": "Programming languages are like girlfriends: The new one is better because you are better.",
+        "portfolio": {
+            "GitHubUserName": "soufieddin",
+            "LinkedInUserName": "Aiden"
         },
         "isDocent": true,
         "dateOfBirth":23
@@ -30,93 +76,48 @@
 
     },
     {
-        "name": "",
-        "surname": "",
-        "email": "",
-        "thumbnail": "",
-        "motto": "",
+        "name": "Jaimy",
+        "surname": "Van Gyseghem",
+        "email": "jaimy.vangyseghem@student.arteveldehs.be",
+        "thumbnail": "https://avatars2.githubusercontent.com/u/57442411?v=4",
+        "motto": "Computer language design is just like a stroll in the park. Jurassic Park, that is.",
         "portfolio": {
-            "GitHubUserName": "",
+            "GitHubUserName": "JaimyVanGyseghem",
             "LinkedInUserName": ""
         },
-        "isDocent": true,
-        "dateOfBirth":23
+        "isDocent": false,
+        "dateOfBirth":777829218
 
 
     },
     {
-        "name": "",
-        "surname": "",
-        "email": "",
-        "thumbnail": "",
-        "motto": "",
+        "name": "Mathieu",
+        "surname": "Spillebeen",
+        "email": "mathieu.spillebeen@arteveldehs.be",
+        "thumbnail": "https://avatars3.githubusercontent.com/u/2550222?v=4",
+        "motto": "Javascript is the duct tape of the Internet.",
         "portfolio": {
-            "GitHubUserName": "",
-            "LinkedInUserName": ""
+            "GitHubUserName": "mathieuspil",
+            "LinkedInUserName": "Mathieu Spillebeen"
         },
         "isDocent": true,
-        "dateOfBirth":23
+        "dateOfBirth":317662818
 
 
     },
     {
-        "name": "",
-        "surname": "",
-        "email": "",
+        "name": "Thibault",
+        "surname": "Fouquaert",
+        "email": "thibault.fouquaert@arteveldehs.be",
         "thumbnail": "",
         "motto": "",
         "portfolio": {
-            "GitHubUserName": "",
-            "LinkedInUserName": ""
+            "GitHubUserName": "Thibaultfq",
+            "LinkedInUserName": "Thibault Fouquaert"
         },
         "isDocent": true,
-        "dateOfBirth":23
-
-
-    },
-    {
-        "name": "",
-        "surname": "",
-        "email": "",
-        "thumbnail": "",
-        "motto": "",
-        "portfolio": {
-            "GitHubUserName": "",
-            "LinkedInUserName": ""
-        },
-        "isDocent": true,
-        "dateOfBirth":23
-
-
-    },
-    {
-        "name": "",
-        "surname": "",
-        "email": "",
-        "thumbnail": "",
-        "motto": "",
-        "portfolio": {
-            "GitHubUserName": "",
-            "LinkedInUserName": ""
-        },
-        "isDocent": true,
-        "dateOfBirth":23
-
-
-    },
-    {
-        "name": "",
-        "surname": "",
-        "email": "",
-        "thumbnail": "",
-        "motto": "",
-        "portfolio": {
-            "GitHubUserName": "",
-            "LinkedInUserName": ""
-        },
-        "isDocent": true,
-        "dateOfBirth":23
+        "dateOfBirth":317662818
 
 
     }
-]
+]`;
