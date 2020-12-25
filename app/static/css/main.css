@@ -1,0 +1,185 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: sans-serif;
+    font-weight: normal;
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    color:  #000000;
+}
+.container {
+    width: 94rem;
+    max-width: 100%;
+    padding: 1rem;
+    margin: 0 auto;
+}
+header {
+    background-color: #48494b;
+   
+}
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    vertical-align: center;
+}
+header img {
+    width: 3rem;
+    height: 3rem;
+}
+.logo img{
+    border-radius: 50%;
+}
+.covid-quantity,
+.weather-degree {
+    color: #fff;
+    font-weight: 700;
+    margin-right: .5rem;
+}
+.covid {
+    display: flex;
+    align-items: center;
+    margin-right: 2rem;
+}
+.weather {
+    display: flex;
+    align-items: center;
+}
+.header__info {
+    display: flex;
+    justify-content: flex-end;
+}
+article {
+    display: flex;
+}
+.team {
+    width: 20%;
+}
+.team__photo {
+    width: 4rem;
+    margin-right: 1rem;
+    transition: all .2s ease-in-out;
+}
+.team__photo:hover {
+    transform: scale(1.1);
+}
+.team__photo-wrapper {
+    display: flex;
+    align-items: center;
+    color: #ccc;
+    font-size: .7rem;
+}
+.team .container {
+    background-color: #222;
+    min-height: 70rem;
+}
+.team__name {
+    color: #fff;
+    font-size: .8;
+}
+.team h2 {
+    color: #000;
+    background-color: #3caea3;
+    padding: 1rem;
+    margin: 0;
+}
+.midle {
+    width:60%;
+    background-color: #222;
+    margin: 0;
+    box-shadow: 0 3px 2px 1px rgb(255, 255, 255);
+}
+.midle h2 {
+    color: #000;
+    background-color: #3caea3;
+    padding: 1rem;
+    margin: 0;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+.midle__team-followers {
+    color: #fff;
+    box-shadow: 0 0 1px 0;
+    text-align: center;
+    padding: 1rem;
+    border-radius: .6rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+.midle__team-followers > * {
+    width:25%;
+    position: relative;
+}
+.midle__team-followers img {
+    height: 10rem;
+    width:10rem;
+}
+.midle__team-followers span {
+    position: absolute;
+    font-size: .8rem;
+    left: 1rem;
+    bottom: 1rem;
+    background-color: rgba(0,0,0, .5);
+    padding: 0 .5rem;
+}
+.users {
+    width: 20%;
+    box-shadow: 0 3px 2px 1px rgb(255, 255, 255);
+    min-height: 70rem;
+    background-color: #222;
+}
+.users .container {
+    background-color: #222;
+}
+.users h2 {
+    color: #000;
+    background-color: #3caea3;
+    padding: 1rem;
+    margin: 0;
+}
+.users button {
+    background-color: #000;
+    color:rgb(255, 255, 255);
+    border: transparent;
+    padding: .5rem;
+}
+.users input {
+    padding: .3rem;
+}
+.users form {
+    display: flex;
+}
+.team__person-wrapper {
+    padding: 0;
+}
+.team__person-wrapper > *{
+    margin-bottom: 1rem;
+    list-style: none;
+}   
+.midle__team-info h2.midle__follow {
+    margin-top: 1rem;
+}
+.repo__wrapper{
+    color: #fff;
+    box-shadow: 0 0 1px 0;
+    padding: 1rem;
+    border-radius: .6rem;
+}
+.midle__repo h4 {
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: .5rem;
+}
+.repo__descr {
+    color: #ccc;
+    font-size: .7rem;
+}
+.repo__other {
+    color: rgb(248, 238, 238);
+    font-size: .8rem;
+}
+.color{
+    fill: #3caea3;
+}
