@@ -34,6 +34,28 @@ function UserApi () {
         } 
     };
 }
+function GitHubApi () {
+    this.getReposOfUser = async (username) => {
+        try {
+            const response = await fetch(`https://api.github.com/users/${username}/repos?page=1&per_page=50`);
+            const dataRepo = await response.json();
+            console.log(dataRepo);
+            return dataRepo;
+        }catch(error) {
+            console.error(error);
+        } 
+    },
+    this.getFollowersOfUser = async (username) => {
+        try {
+            const response = await fetch(`https://api.github.com/users/${username}/followers?page=1&per_page=100`);
+            const dataFollower = await response.json();
+            console.log(dataFollower);
+            return dataFollower;
+        }catch(error) {
+            console.error(error);
+        } 
+    }
+}
 
 
 
