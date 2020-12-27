@@ -53,9 +53,13 @@ header img {
 }
 article {
     display: flex;
+    
 }
 .team {
     width: 20%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 88vh;
 }
 .team__photo {
     width: 4rem;
@@ -70,6 +74,7 @@ article {
     align-items: center;
     color: #ccc;
     font-size: .7rem;
+    cursor: pointer;
 }
 .team .container {
     background-color: #222;
@@ -90,6 +95,9 @@ article {
     background-color: #222;
     margin: 0;
     box-shadow: 0 3px 2px 1px rgb(255, 255, 255);
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 88vh;
 }
 .midle h2 {
     color: #000;
@@ -127,11 +135,14 @@ article {
 .users {
     width: 20%;
     box-shadow: 0 3px 2px 1px rgb(255, 255, 255);
-    min-height: 70rem;
+    height: 88vh;
     background-color: #222;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 .users .container {
     background-color: #222;
+    
 }
 .users h2 {
     color: #000;
@@ -182,4 +193,60 @@ article {
 }
 .color{
     fill: #3caea3;
+}
+.bg {
+    /* background: url() center center / cover no-repeat; */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    height: 35rem;
+}
+.type {
+    position: absolute;
+    font-size: 1.1rem;
+    right: 0;
+    top: 0;
+    background-color: rgba(0,0,0, .5);
+    padding: .5rem 1rem;
+    color: #fff;
+}
+.bg p {
+    position: absolute;
+    width: 40rem;
+    color: #fff;
+    font-size: 1.4rem;
+    text-align: center;
+    padding: 1rem;
+    background-color: rgba(0,0,0, .1);
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.midle__photo-name {
+    position: absolute;
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-align: center;
+    padding: 1rem;
+    bottom: 0;
+    background-color: rgba(0,0,0, .5);
+}
+.users-list  {
+    padding: 0;
+}
+.users-list li {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    
+}
+.users-list li:hover img {
+    transform: scale(1.1);
+}
+.users-list li img {
+    margin-right: .5rem;
+    transition: all .2s ease-in-out;
 }

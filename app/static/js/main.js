@@ -1,16 +1,16 @@
 
 const weatherUrl = "http://api.weatherapi.com/v1/current.json?key=9f0a80dc3da94c4db8c151125202012&q=Ghent";
 const covidUrl = "https://data.stad.gent/api/records/1.0/search/?dataset=dataset-of-cumulative-number-of-confirmed-cases-by-municipality&q=";
-//const reposUrl = `https://api.github.com/users/${username}/repos?page=1&per_page=50`;
 (async () => { 
     const app = {
         async init() {
             this.gitApi = new GitHubApi();
             this.cacheElements();
+            this.registerListeners();
             await this.fetchWeather();
             await this.fetchCovid();
             await this.fetchPgm();
-            await this.registerListeners();
+            await this.fetchDefaultData();
         },
         cacheElements() {
             this.covidQuantity = document.querySelector('.covid-quantity');
@@ -19,9 +19,23 @@ const covidUrl = "https://data.stad.gent/api/records/1.0/search/?dataset=dataset
             this.pgmTeam = document.querySelector('.team__person-wrapper');
             this.pgmInfoRepo = document.querySelector('.midle__repo');
         },
-        async registerListeners() {
+        registerListeners() {
+            const searchButtonElement = document.getElementById("searchBtn");
+
+            if(searchButtonElement) {
+                searchButtonElement.addEventListener('click', (e) => {
+                    const searchTermElement = document.getElementById("searchField");
+                    if(!searchTermElement) {
+                        return;
+                    }
+                    const searchTerm = searchTermElement.value;
+                    this.fetchSearchResults(searchTerm);
+                });
+            }
+        },
+        async fetchDefaultData() {
             await this.fetchUserInfo("pgmgent");
-            await this.fetchFollowers("dpgmgent");
+            await this.fetchFollowers("pgmgent");
         },
         async fetchWeather() {
             this.weatherApi = new WeatherApi();
@@ -42,18 +56,57 @@ const covidUrl = "https://data.stad.gent/api/records/1.0/search/?dataset=dataset
         async fetchPgm() {
             this.pgmApi = new UserApi();
             const jsonData = await this.pgmApi.getUsers();
-            this.updatePgm(jsonData);            
+            this.updatePgm(jsonData);    
+            this.updateTeamPhoto(jsonData);        
         },
         async fetchUserInfo(username) {
            const dataRepo = await this.gitApi.getReposOfUser(username);
            this.updatePgmRepo(dataRepo);
-
         },
         async fetchFollowers(username){
-            //this.gitFollowers = new GitHubApi();
             const followersData = await this.gitApi.getFollowersOfUser(username);
             this.updatePgmFollower(followersData);
         }, 
+        async fetchSearchResults(searchTerm) {
+            const users = await this.gitApi.getUsersByName(searchTerm);
+            this.updateSearchResults(users);
+        },
+        async fetchSearchResultsForPhoto(username) {
+            const users = await this.gitApi.getUsersByName(username);
+            
+        },
+        updateSearchResults(results) {
+            const searchResultsElement = document.getElementById("searchResults");
+            if(searchResultsElement) {
+                searchResultsElement.innerHTML = "";
+                results.items.forEach(r => {
+                    const item = document.createElement("li");
+                    const span = document.createElement("span");
+                    item.classList.add("team__photo-wrapper-js");
+                    item.classList.add("photo__content-js");
+                    item.style.color = "white";
+                    item.style.cursor = "pointer";
+                    item.id = r.login;
+                    span.innerText = r.login;
+                    item.addEventListener('click', (e) => {
+                        this.getUserInfo(e.currentTarget.id);
+                        this.fetchSearchResultsForPhoto(e.currentTarget.id);
+                        let str = "";
+                        const photoContainer = document.querySelector('.midle__photo');
+                        str = `<div class="bg" style="background-image: url(${r.avatar_url}})"><span class="midle__photo-name">${r.login}</span></div>`;
+                        photoContainer.innerHTML = str;
+                    });
+
+                    const img = document.createElement("img");
+                    img.width = 60;
+                    img.height = 60;
+                    img.src = r.avatar_url;
+                    item.appendChild(img);
+                    item.appendChild(span);
+                    searchResultsElement.appendChild(item);
+                });
+            }
+        },
         updateWeather(weather) {
             const degree = weather.current.temp_c;
             this.weather.innerText = degree;
@@ -67,20 +120,29 @@ const covidUrl = "https://data.stad.gent/api/records/1.0/search/?dataset=dataset
             }
             this.covidQuantity.innerText = str;
         },
+        getUserInfo(userName) {
+            this.fetchUserInfo(userName);
+            this.fetchFollowers(userName);
+            this.fetchSearchResultsForPhoto(userName);
+        },
         updatePgm(pgmData) {
             const pgm = pgmData.team;
             console.log(pgm);
-            let str = "";
             pgm.forEach((e) => {
-                str += `<li>
-                <div class="team__photo-wrapper" id="${e.portfolio.GitHubUserName}">
+                let li = document.createElement('li');                
+                const source =  `<div class="team__photo-wrapper team__photo-wrapper-js" id="${e.portfolio.GitHubUserName}">
                     <img class="team__photo" src="${e.thumbnail}" alt="photo">
                     <span class="team__git-name">${e.portfolio.GitHubUserName}</span>
                 </div>
-                <span class="team__name">${e.name} ${e.surname}</span>
-            </li>`;
+                <span class="team__name">${e.name} ${e.surname}</span>`;
+                li.innerHTML = source;
+                li.id = e.portfolio.GitHubUserName;
+                li.addEventListener('click', (e) => {
+                    this.getUserInfo(e.currentTarget.id);
+                });
+                this.pgmTeam.appendChild(li);
             });
-            this.pgmTeam.innerHTML = str;
+            //this.pgmTeam.innerHTML = str;
             //full_name
             //description
             //size
@@ -129,16 +191,31 @@ const covidUrl = "https://data.stad.gent/api/records/1.0/search/?dataset=dataset
             }
 
         },
-        updateTeamInfo() {
-            const elements = documemt.querySelectorAll('.team__photo-wrapper');
+        updateTeamPhoto(jsonData) {
+            const data = jsonData.team;           
+            const elements = document.querySelectorAll('.team__photo-wrapper-js');
+            const photo_area = document.querySelector('.midle__photo');
+            let isDocent;
+            let str = '';
             elements.forEach((e) => {
-                e.addEventListener('click',fetchUserInfo(e.id));
+                e.addEventListener('click',function() {
+                    data.forEach((d) => {
+                        if(e.id == d.portfolio.GitHubUserName){
+                            if(d.isDocent == true){
+                                isDocent = "Lecturer";
+                            }else {
+                                isDocent = "Student"
+                            }
+                            str = `<div class="bg" style="background-image: url(${d.thumbnail}})"><p>${d.motto}</p><span class="type">${isDocent}</span><span class="midle__photo-name">${d.name} ${d.surname}</span></div>`;
+                        }
 
-            })
-            
+                    })    
+                    photo_area.innerHTML = str;             
+                });
 
-
+            }); 
         }
+       
         
        
     };

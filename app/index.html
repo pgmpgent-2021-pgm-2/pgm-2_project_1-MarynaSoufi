@@ -36,8 +36,9 @@
                 </ul>
             </div>
         </section>
-        <section class="midle container">
-            <div class="midle__team-info">
+        <section class="midle ">
+            <div class="midle__photo"></div>
+            <div class="midle__team-info container">
                 <h2>Repositories</h2>
                 <div class="midle__repo">
 
@@ -50,9 +51,10 @@
             <h2>GitHub Users</h2>
             <div class="container">
                 <form action="">
-                    <input type="text"name="search">
-                    <button type="submit">Search</button>
-                  </form>
+                    <input type="text" name="search" id="searchField">
+                    <button type="button" id="searchBtn">Search</button>
+                </form>
+                <ul class="users-list" id="searchResults"></ul>
             </div>
         </section>
     </article>

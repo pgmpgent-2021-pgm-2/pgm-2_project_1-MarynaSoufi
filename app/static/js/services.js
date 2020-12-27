@@ -54,7 +54,17 @@ function GitHubApi () {
         }catch(error) {
             console.error(error);
         } 
+    },
+    this.getUsersByName = async (name) => {
+        try{
+            const response = await fetch(`https://api.github.com/search/users?sort=desc&page=1&per_page=100&q=${name}`);
+            const users = await response.json();
+            return users;
+        } catch(error) {
+            console.error(error);
+        }
     }
+
 }
 
 
